@@ -1,0 +1,49 @@
+mport java.util.List;
+import java.util.ArrayList;
+
+class Student {
+    String name;
+    double grade;
+
+    // Constructor
+    public Student(String name, double grade) {
+        this.name = name;
+        this.grade = grade;
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        List<Student> students = new ArrayList<>();
+        
+        // Adding students
+        students.add(new Student("John", 90.5));
+        students.add(new Student("Jane", 85.0));
+        students.add(new Student("Doe", 78.5));
+
+        // Calculate statistics
+        double total = 0;
+        double highest = Double.MIN_VALUE;
+        double lowest = Double.MAX_VALUE;
+
+        for (Student s : students) {
+            total += s.grade;
+            if (s.grade > highest) highest = s.grade;
+            if (s.grade < lowest) lowest = s.grade;
+        }
+  double average = total / students.size();
+
+        // Display summary report
+        System.out.println("\n===== Summary Report =====");
+        System.out.printf("Average Grade: %.2f\n", average);
+        System.out.printf("Highest Grade: %.2f\n", highest);
+        System.out.printf("Lowest Grade: %.2f\n", lowest);
+
+        System.out.println("List of Students and Grades:");
+        for (Student s : students) {
+            System.out.printf("%s: %.2f\n", s.name, s.grade);
+        }
+        
+        System.out.println("===== End of Report =====");
+    }
+}
